@@ -184,7 +184,7 @@ fun Greetings() {
 
 
             Button(
-                onClick = { home.startActivity(Intent(home, AboutActivity::class.java)) },
+                onClick = { home.startActivity(Intent(home, MainActivity::class.java)) },
                 elevation = ButtonDefaults.buttonElevation(
                     defaultElevation = 10.dp,
                     pressedElevation = 15.dp,
