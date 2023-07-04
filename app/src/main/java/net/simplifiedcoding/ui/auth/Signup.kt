@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.text.KeyboardOptions
@@ -20,11 +19,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -192,7 +189,16 @@ Column(
 
 
         ) {
-            Text("SIGNUP", style = MaterialTheme.typography.titleMedium, fontStyle = FontStyle.Italic
+            Text(
+                modifier = Modifier
+                    .clickable {
+                        navController.navigate(ROUTE_LOGIN) {
+                            popUpTo(ROUTE_SIGNUP) { inclusive = true }
+                        }
+                    },
+                
+                text = "SIGNUP", style = MaterialTheme.typography.titleMedium, fontStyle = FontStyle.Italic,
+
 
             )
         }

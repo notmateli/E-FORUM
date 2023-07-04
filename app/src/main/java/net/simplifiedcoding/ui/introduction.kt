@@ -1,11 +1,12 @@
+@file:Suppress("PreviewAnnotationInFunctionWithParameters")
+
 package net.simplifiedcoding.ui
 
-//import androidx.compose.foundation.layout.RowScopeInstance.alignByBaseline
+
 import android.annotation.SuppressLint
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,31 +25,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import net.simplifiedcoding.R
+import net.simplifiedcoding.navigation.ROUTE_INTRODUCTION
+import net.simplifiedcoding.navigation.ROUTE_LOGIN
+import net.simplifiedcoding.ui.auth.AuthViewModel
+import net.simplifiedcoding.ui.theme.AppTheme
 
-
-class IntroductionActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            Greeting()
-
-        }
-    }
-}
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview(showBackground = true)
 @Composable
-fun Greeting() {
-    val home = LocalContext.current
+fun IntroductionScreen(viewModel: AuthViewModel?, navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -109,15 +104,17 @@ fun Greeting() {
                                 "BEGIN YOUR JOURNEY HERE",
                                 color = Color.White,
                                 fontStyle = FontStyle.Italic,
-
-
-
                                 modifier = Modifier
-                                    .padding(start = 10.dp)
+                                    .clickable {
+                                        navController.navigate(ROUTE_LOGIN) {
+                                            popUpTo(ROUTE_INTRODUCTION) { inclusive = true }
+                                        }
+                                    },
 
 
 
-                            )
+
+                                )
                         }
                     }
 
@@ -127,6 +124,21 @@ fun Greeting() {
 
             }
         }
+    }
+}
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
+@Composable
+fun IntroductionScreenPreviewLight() {
+    AppTheme {
+        net.simplifiedcoding.ui.IntroductionScreen(null, rememberNavController())
+    }
+}
+
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun IntroductionPreviewDark() {
+    AppTheme {
+        net.simplifiedcoding.ui.IntroductionScreen(null, rememberNavController())
     }
 }
 
