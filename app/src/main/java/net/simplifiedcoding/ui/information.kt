@@ -1,7 +1,6 @@
 package net.simplifiedcoding.ui
 
 import android.content.res.Configuration
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,7 +14,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
@@ -23,9 +21,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import net.simplifiedcoding.R
 import net.simplifiedcoding.navigation.ROUTE_CONTRIBUTE
 import net.simplifiedcoding.navigation.ROUTE_INFORMATION
+import net.simplifiedcoding.ui.animate.infoAnimation
 import net.simplifiedcoding.ui.auth.AuthViewModel
 import net.simplifiedcoding.ui.theme.AppTheme
 
@@ -43,7 +41,7 @@ fun InfoScreen(viewModel: AuthViewModel?, navController: NavHostController) {
         item {
             Box() {
 //                Image(
-//                    painter = painterResource(R.drawable.forum221),
+//                    painter = painterResource(R.drawable.forumback),
 //                    contentDescription = null, // Provide a description if needed
 //                    modifier = Modifier.fillMaxSize(),
 //                    contentScale = ContentScale.FillBounds
@@ -68,14 +66,7 @@ fun InfoScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                     )
                     Spacer(modifier = Modifier.height(10.dp))
 
-                    Image(
-                    painter = painterResource(R.drawable.forum221),
-                    contentDescription = null, // Provide a description if needed
-//                    modifier = Modifier.fillMaxSize(),
-//                    contentScale = ContentScale.FillBounds
-                )
-                    Spacer(modifier = Modifier.height(10.dp))
-
+              infoAnimation(height = 400)
 
                     Text(
                         modifier = Modifier

@@ -1,6 +1,7 @@
 package net.simplifiedcoding.ui.home
 
 import android.content.res.Configuration
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -15,7 +16,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -38,6 +38,7 @@ import androidx.navigation.compose.rememberNavController
 import net.simplifiedcoding.R
 import net.simplifiedcoding.navigation.ROUTE_HOME
 import net.simplifiedcoding.navigation.ROUTE_INFORMATION
+import net.simplifiedcoding.ui.animate.homeAnimation
 import net.simplifiedcoding.ui.animate.managerAnimation
 import net.simplifiedcoding.ui.auth.AuthViewModel
 import net.simplifiedcoding.ui.theme.AppTheme
@@ -55,47 +56,45 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
 
         horizontalAlignment = Alignment.CenterHorizontally,
 
-        ) {
+        )  {
         item {
 
 
 
 
-                Row(
-                    verticalAlignment = Alignment.Top,
-                    horizontalArrangement = Arrangement.End,
+                Column(
                 )
                 {
                     Text(
                         "Want to share your ideas?",
-                        modifier = Modifier,
-//                            .padding(10.dp),
+                        modifier = Modifier
+                            .fillMaxWidth(),
+
                         color = (Color.Red),
                         fontFamily = FontFamily.Cursive,
                         fontWeight = FontWeight.Bold,
                         textDecoration = TextDecoration.Underline,
-                        textAlign = TextAlign.Left
-                    )
-                    Spacer(modifier = Modifier.width(50.dp))
-
-                    Image(
-                        painter = painterResource(
-                            id = R.drawable.forums
-                        ),
-                        contentDescription = "",
-                        modifier = Modifier
-                            .padding(spacing.extraSmall)
-                            .width(120.dp)
-                            .height(120.dp)
-                            .border(1.dp, Color.Transparent, CircleShape)
-                            .fillMaxWidth()
+                        textAlign = TextAlign.Left,
 
                     )
+                    Spacer(modifier = Modifier.height(20.dp))
+
+
+                homeAnimation(height = 200)
+
 
                 }
-                Spacer(modifier = Modifier.height(20.dp))
 
-                Column() {
+
+                Column {
+                    Text(text = "What Do We Do?",
+                    color = (Color.Red),
+                    fontFamily = FontFamily.Cursive,
+                    fontWeight = FontWeight.Bold,
+                    textDecoration = TextDecoration.Underline,
+                    textAlign = TextAlign.Center,
+                    )
+                    Spacer(modifier = Modifier.height(15.dp))
                     Text(
                         text = "I am creating a  community platform that connects individuals with similar interests and facilitates discussions on various topics.",
                         modifier = Modifier,
@@ -132,6 +131,7 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                         Text(
                             "View All",
                             color = Color.Red,
+                            fontWeight = FontWeight.SemiBold,
 
                             modifier = Modifier
                                 .clickable {
@@ -158,6 +158,7 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
 
                         Card(
                             shape = RoundedCornerShape(10.dp),
+                            border = BorderStroke(1.dp, Color.Black),
                             elevation = CardDefaults.cardElevation(
                                 defaultElevation = 10.dp,
                             ),
@@ -176,7 +177,7 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                                     .width(170.dp)
                                     .height(120.dp)
                                     .border(1.dp, Color.Transparent, RectangleShape)
-                                    .fillMaxWidth()
+//                                    .fillMaxWidth()
                             )
                             Text(
 
@@ -203,6 +204,7 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                                 )
 
                         }
+                        Spacer(modifier = Modifier.width(20.dp))
 
 
                         //profile 2
@@ -212,6 +214,7 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                             .padding(10.dp)
                         Card(
                             shape = RoundedCornerShape(10.dp),
+                            border = BorderStroke(1.dp, Color.Black),
                             elevation = CardDefaults.cardElevation(
                                 defaultElevation = 10.dp,
                             ),
@@ -222,7 +225,7 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
 
                             Image(
                                 painter = painterResource(
-                                    id = R.drawable.profile34
+                                    id = R.drawable.profile11
                                 ),
                                 contentDescription = "",
                                 modifier = Modifier
@@ -230,7 +233,7 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                                     .width(170.dp)
                                     .height(120.dp)
                                     .border(1.dp, Color.Transparent, RectangleShape)
-                                    .fillMaxWidth()
+//                                    .fillMaxWidth()
                             )
                             Text(
 
@@ -263,7 +266,7 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
 
                 Column() {
 
-managerAnimation(height = 200)
+managerAnimation(height = 300)
                 }
             }
 

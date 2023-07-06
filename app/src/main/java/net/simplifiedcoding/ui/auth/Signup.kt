@@ -176,6 +176,7 @@ Column(
         Button(
             onClick = {
                 viewModel?.signup(name, email, password)
+
             },
             modifier = Modifier.constrainAs(refButtonSignup) {
                 top.linkTo(refPassword.bottom, spacing.large)
